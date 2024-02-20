@@ -35,12 +35,12 @@ npm install
 Initialize the PostgreSQL database with the provided schema:  
 psql -U <username> -d <database> -a -f todoapp.sql  
 
-##Configure your database connection settings by creating a .env file:  
-#PG_USER=  
-#PG_PASSWORD=
-#HOST= 
-#DB_PORT=
-#DB_NAME=
+## Configure your database connection settings by creating a .env file:  
+PG_USER=  
+PG_PASSWORD=
+HOST= 
+DB_PORT=
+DB_NAME=
   
 Start the server:  
 npm start  
@@ -55,9 +55,9 @@ npm install
 Launch the React development server:  
 npm start  
 
-##Set REACT_APP_SERVERURL that will connect front end with your backend server in .env file located in client server.
+## Set REACT_APP_SERVERURL that will connect front end with your backend server in .env file located in client server.
 
-#REACT_APP_SERVERURL=
+REACT_APP_SERVERURL=
 
 The frontend should now be running on http://localhost:3000.
 
