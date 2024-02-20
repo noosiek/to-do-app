@@ -8,7 +8,7 @@ const DoingList = ({ task, getData, moveToComponent }) => {
 
   const deleteItem = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_SERVERURL}/todos/${task.id}`, {
+      const response = await fetch(`${process.env.REACT_APP_SERVERURL}/api/todos/${task.id}`, {
         method: 'DELETE',
       });
       if (response.status === 200) {
@@ -23,7 +23,7 @@ const DoingList = ({ task, getData, moveToComponent }) => {
     if (task.status === 'doing') {
       try {
         const updatedTask = { ...task, status: 'done', progress: 100 };
-        const response = fetch(`${process.env.REACT_APP_SERVERURL}/todos/${task.id}`, {
+        const response = fetch(`${process.env.REACT_APP_SERVERURL}/api/todos/${task.id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
@@ -33,7 +33,6 @@ const DoingList = ({ task, getData, moveToComponent }) => {
 
         if (response.status === 200) {
           getData();
-          // Po zaktualizowaniu statusu zadania, przenieś je do komponentu DoneList
           moveToComponent('DoneList', task);
         }
       } catch (error) {
@@ -42,7 +41,6 @@ const DoingList = ({ task, getData, moveToComponent }) => {
     };
 
   if (task.status !== 'done') {
-    // Jeśli status zadania nie jest 'doing', nie renderuj tego komponentu
     return null;
   }
   const categoryIcons = {

@@ -17,7 +17,7 @@ const App = () => {
 
   const getData = useCallback(async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_SERVERURL}/todos/${userEmail}`);
+      const response = await fetch(`${process.env.REACT_APP_SERVERURL}/api/todos/${userEmail}`);
       if (response.status === 200) {
         const json = await response.json();
         setTasks(json);
