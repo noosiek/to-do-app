@@ -52,7 +52,7 @@ const Modal = ({ mode, setShowModal, getData, task }) => {
     };
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_SERVERURL}/api/todos`, {
+      const response = await fetch(`${process.env.REACT_APP_SERVERURL}/todos`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formattedData),
@@ -73,7 +73,7 @@ const Modal = ({ mode, setShowModal, getData, task }) => {
     };
 
     try {
-      const response = await fetch(`${process.env.REACT_APP_SERVERURL}/api/todos/${task.id}`, {
+      const response = await fetch(`${process.env.REACT_APP_SERVERURL}/todos/${task.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formattedData),

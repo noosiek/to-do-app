@@ -42,7 +42,7 @@ const Auth = ({ inputStyle }) => {
         }
 
         try {
-            const response = await fetch(`${process.env.REACT_APP_SERVERURL}/api/${endpoint}`, {
+            const response = await fetch(`${process.env.REACT_APP_SERVERURL}/${endpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password })
