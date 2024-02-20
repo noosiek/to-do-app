@@ -8,7 +8,7 @@ const DoingList = ({ task, getData, moveToComponent }) => {
 
   const deleteItem = async () => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_SERVERURL}/todos/${task.id}`, {
+      const response = await fetch(`${process.env.REACT_APP_SERVERURL}/api/todos/${task.id}`, {
         method: 'DELETE',
       });
       if (response.status === 200) {
@@ -23,7 +23,7 @@ const DoingList = ({ task, getData, moveToComponent }) => {
     try {
       if (task.status === 'todo') {
         const updatedTask = { ...task, status: 'done', progress: 100 };
-        const response = await fetch(`${process.env.REACT_APP_SERVERURL}/todos/${task.id}`, {
+        const response = await fetch(`${process.env.REACT_APP_SERVERURL}/api/todos/${task.id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',

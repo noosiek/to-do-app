@@ -8,9 +8,7 @@ const jwt = require('jsonwebtoken');
 
 app.use(cors());
 app.use(express.json());
-
-// Add new todo
-app.post('/todos', async (req, res) => {
+app.post('/api/todos', async (req, res) => {
   try {
     const { user_email, title, progress, date, notes, status, task_category, due_date } = req.body;
     const newToDo = await pool.query(
@@ -25,7 +23,7 @@ app.post('/todos', async (req, res) => {
 });
 
 // Get a specific todo by id 
-app.get('/todos/id/:id', async (req, res) => {
+app.get('/api/todos/id/:id', async (req, res) => {
   const { id } = req.params;
   try {
     const todo = await pool.query('SELECT * FROM todos WHERE id = $1', [id]);
@@ -37,7 +35,7 @@ app.get('/todos/id/:id', async (req, res) => {
 });
 
 // Get all todos for user by userEmail with an optional status filter
-app.get('/todos/:userEmail', async (req, res) => {
+app.get('/api/todos/:userEmail', async (req, res) => {
   const { userEmail } = req.params;
   const { status, task_category } = req.query; 
   try {
@@ -63,7 +61,7 @@ app.get('/todos/:userEmail', async (req, res) => {
 });
 
 // Delete a todo
-app.delete('/todos/:id', async (req, res) => {
+app.delete('/api/todos/:id', async (req, res) => {
   const { id } = req.params;
   try {
     await pool.query('DELETE FROM todos WHERE id = $1', [id]);
@@ -75,7 +73,7 @@ app.delete('/todos/:id', async (req, res) => {
 });
 
 // Edit a todo
-app.put('/todos/:id', async (req, res) => {
+app.put('/api/todos/:id', async (req, res) => {
   const { id } = req.params;
   const { user_email, title, progress, date, notes, status, task_category, due_date } = req.body;
   try {
@@ -91,7 +89,7 @@ app.put('/todos/:id', async (req, res) => {
 });
 
 // sign up
-app.post('/signup', async (req, res) => {
+app.post('/api/signup', async (req, res) => {
   const { email, password } = req.body;
   try {
     // Check if user already exists
@@ -127,7 +125,7 @@ app.post('/signup', async (req, res) => {
 });
 
 // login
-app.post('/login', async (req, res) => {
+app.post('/api/login', async (req, res) => {
   try {
     const { email, password } = req.body;
     const users = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
